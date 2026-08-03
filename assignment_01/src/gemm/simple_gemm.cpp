@@ -1,7 +1,17 @@
-#include<bits/stdc++.h>
+#include<vector>
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<algorithm>
 #include<chrono>
-void simple_gemm(ifstream &inputFile){
+#include "gemm.h"
 
+void simple_gemm(const string &filename){
+    ifstream inputFile(filename);
+    if(!inputFile.is_open()){
+        cerr<<"Error opening file: "<<filename<<endl;
+        return;
+    }
     int m , k, n;
     inputFile>>m>>k>>n;
     vector<vector<int>> mat1(m, vector<int>(k));
@@ -18,6 +28,7 @@ void simple_gemm(ifstream &inputFile){
     }
 
     vector<vector<int>> final_mat(m, vector<int>(n,0));
+    auto start = chrono::high_resolution_clock::now();
     for(int i=0; i<m; i++){
         for(int j=0; j<n; j++){
             for(int l=0; l<k; l++){
@@ -25,5 +36,16 @@ void simple_gemm(ifstream &inputFile){
             }
         }
     }
-    return 0;
+    auto end = chrono::high_resolution_clock::now();
+    cout<<"Resultant Matrix:"<<endl;    
+    for(int i=0; i<m; i++){
+        for(int j=0; j<n; j++){
+            cout<<final_mat[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    std::chrono::duration<double,std::milli> duration = end-start;
+    cout<<"Execution Time: "<<double(duration.count())<<" ms"<<endl;
+
+    return;
 }

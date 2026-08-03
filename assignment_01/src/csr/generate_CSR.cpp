@@ -1,4 +1,11 @@
 #include<chrono>
+#include<vector>
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<algorithm>
+using namespace std;
+
 void generate_csr(vector<vector<pair<int,int>>> &adj_list){
     std::sort(adj_list.begin(), adj_list.end());
     int V = adj_list.size();
@@ -21,4 +28,9 @@ void generate_csr(vector<vector<pair<int,int>>> &adj_list){
     cout<<"Execution Time: "<<duration<<" ms"<<endl;
 
     return;
+}
+
+
+void generateCSR(const std::string& file) {
+    vector<vector<pair<int,int>>> adjList;
 }
