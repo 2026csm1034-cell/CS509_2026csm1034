@@ -46,14 +46,17 @@ void blocking_gemm(const string& filename, int block_size){
         } 
     }
     auto end= chrono::high_resolution_clock::now();
+    std::string path = createOutputFile(filename, "blocking");
+    std::ofstream outputFile(path);
     cout<<"\nOutput: "<<endl;
-    cout<<"Resultant Matrix:"<<endl;
+    outputFile<<m<<" "<<n<<" "<<endl;
     for(int i=0; i<m; i++){
         for(int j=0; j<n; j++){
-            cout<<result[i][j]<<" ";
+            outputFile<<result[i][j]<<" ";
         }
-        cout<<endl;
+        outputFile<<endl;
     }
+    cout<<"Resultant Matrix: "<<path<<endl;
     std::chrono::duration<double,std::milli> duration = end-start;
     cout<<"Execution Time: "<<double(duration.count())<<" ms"<<endl;
     return;

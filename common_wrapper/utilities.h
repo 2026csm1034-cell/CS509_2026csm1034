@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <filesystem>
+#include <fstream>
 #include <algorithm>
 
 using namespace std;
@@ -60,6 +61,17 @@ inline string chooseTestFile(const string &folder)
     }
 
     return files[choice - 1];
+}
+
+inline string createOutputFile(const string &inputFile, const string &algorithm){
+    //create outputs directory of it dosn't exits
+    fs::create_directories("assignment_01/outputs");
+
+    string filename = fs::path(inputFile).stem().string();
+
+    string outputFile = "assignment_01/outputs/" + filename + "_" + algorithm + ".txt";
+
+    return outputFile;
 }
 
 #endif // UTILITY_H

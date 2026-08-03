@@ -13,6 +13,12 @@ int main(){
                 //call assignment01Driver
                 assignment01Driver();
                 break;
+            case 2:
+                cout<<"\nAssignment_02 is not implemented yet."<<endl;
+                break;
+            case 3:
+                cout<<"\nAssignment_03 is not implemented yet."<<endl;
+                break;
             case 0:
                 cout<<"\n Exiting..."<<endl;
                 return 0;

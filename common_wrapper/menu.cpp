@@ -9,6 +9,8 @@ int Menu::showAssignmentMenu(){
     cout<< "======================================="<<endl;
 
     cout<<"1. Assignment_01"<<endl;
+    cout<<"2. Assignment_02"<<endl;
+    cout<<"3. Assignment_03"<<endl;
     cout<<"0. Exit"<<endl;
 
     int choice=-1;

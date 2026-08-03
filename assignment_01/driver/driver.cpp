@@ -8,7 +8,7 @@ using namespace std;
 
 // helper blocking gemm
 void helperBlockingGemm(){
-    cout<<"\nSelect input Block: ";
+    cout<<"\nSelect input Block Size preferred power of 2: ";
     int blockSize;
     cin>>blockSize;
     int mode = Menu::chooseInputMenu();
