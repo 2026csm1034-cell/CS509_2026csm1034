@@ -33,4 +33,26 @@ void generate_csr(vector<vector<pair<int,int>>> &adj_list){
 
 void generateCSR(const std::string& file) {
     vector<vector<pair<int,int>>> adjList;
+    ifstream inputFile(file);
+    if(!inputFile.is_open()){
+        cout<<"Error opening file: "<<file<<endl;
+        return;
+    }
+    int V, E;
+    inputFile>>V>>E;
+
+    adjList.resize(V);
+    for(int i=0; i<V; i++){
+        int u, degree;
+        inputFile>>u>>degree;
+
+        for(int d=0; d<degree; d++){
+            int v, weight;
+            inputFile>>v>>weight;
+            adjList[u].push_back({v,weight});
+        }
+    }
+
+    generate_csr(adjList);
+    return;
 }

@@ -9,13 +9,13 @@ int main(){
         int assignChoice = Menu::showAssignmentMenu();
 
         switch(assignChoice){
-            case 0:
-                cout<<"\n Exiting..."<<endl;
-                return 0;
             case 1:
                 //call assignment01Driver
                 assignment01Driver();
                 break;
+            case 0:
+                cout<<"\n Exiting..."<<endl;
+                return 0;
             default:
                 cout<<"\nInvalid choice.\n";
         }  

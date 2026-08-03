@@ -11,11 +11,15 @@ int Menu::showAssignmentMenu(){
     cout<<"1. Assignment_01"<<endl;
     cout<<"0. Exit"<<endl;
 
-    cout<<"\n Choice: ";
+    int choice=-1;
 
-    int choice;
+    cout << "\nEnter choice: ";
 
-    cin>>choice;
+    if (!(cin >> choice)){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        return -1;
+    }
     return choice;
 }
 
@@ -30,8 +34,15 @@ int Menu::showAlgorithmMenu(){
     cout<<"3. CSR Representation"<<endl;
     cout<<"0. Go Back"<<endl;
 
-    int choice;
-    cin>>choice;
+    int choice=-1;
+
+    cout << "\nEnter choice: ";
+
+    if (!(cin >> choice)){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        return -1;
+    }
 
     return choice;
 }
@@ -46,8 +57,14 @@ int Menu::chooseInputMenu(){
     cout<<"3. Enter Custom Input File"<<endl;
     cout<<"0. Go Back"<<endl;
 
-    int choice;
-    cin>>choice;
+    int choice=-1;
 
+    cout << "\nEnter choice: ";
+
+    if (!(cin >> choice)){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        return -1;
+    }
     return choice;
 }
