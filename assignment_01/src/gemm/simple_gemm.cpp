@@ -32,7 +32,7 @@ void simple_gemm(const string &filename){
     for(int i=0; i<m; i++){
         for(int j=0; j<n; j++){
             for(int l=0; l<k; l++){
-                final_mat[i][j] += mat1[i][l] * mat2[l][j];
+                final_mat[i][j] = (final_mat[i][j] + (mat1[i][l] * mat2[l][j])%mod)%mod;
             }
         }
     }

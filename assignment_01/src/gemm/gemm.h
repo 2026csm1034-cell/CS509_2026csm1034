@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include "../../../common_wrapper/utilities.h"
+#define mod 1000000007
 using namespace std;
 void simple_gemm(const string &filename);
 void blocking_gemm(const string&filename, int block_size);

@@ -38,7 +38,7 @@ void blocking_gemm(const string& filename, int block_size){
                 for(int ii=0; ii<min(block_size, m-i); ii++){
                     for(int jj=0; jj<min(block_size, n-j); jj++){
                         for(int ll=0; ll<min(block_size, k-l); ll++){
-                            result[i+ii][j+jj] += mat1[i+ii][l+ll] * mat2[l+ll][j+jj];
+                            result[i+ii][j+jj] = (result[i+ii][j+jj] + (mat1[i+ii][l+ll] * mat2[l+ll][j+jj])%mod)%mod;
                         }
                     }
                 }
