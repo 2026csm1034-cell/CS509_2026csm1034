@@ -37,9 +37,7 @@ inline void showFiles(const vector<string> &files)
 
     for(int i = 0; i < files.size(); i++)
     {
-        cout << i + 1 << ". "
-             << fs::path(files[i]).filename().string()
-             << endl;
+        cout << i + 1 << ". "<< fs::path(files[i]).filename().string()<< endl;
     }
 }
 

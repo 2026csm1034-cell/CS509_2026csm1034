@@ -69,7 +69,6 @@ Parsing
 
 CSR conversion
 
-Output writing
 
 
 ---
@@ -87,3 +86,9 @@ Expected Time:   abc ms
 | Test File | Vertices | Edges |
 |------------|----------|-------|
 | graph_10 | 10 | 12 |
+
+
+## DrawBacks
+- my code was running on single core
+- when avove 5000*5000 matrix files size is give cpu of sigle thread is 100.1 % code taking very long time greater than 10 minutes. 
+- for this reason I limited the file size of matrix should be less than 3000 is prefrable.

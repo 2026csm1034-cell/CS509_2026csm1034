@@ -108,7 +108,7 @@ void helperGenerateCSR(){
         case 1:{
             string file = chooseTestFile("./assignment_01/tests/csr");
 
-            generateCSR(file);
+            generateWeightedCSR(file);
 
             break;
             
@@ -120,7 +120,7 @@ void helperGenerateCSR(){
             for(string file : files){
                 cout << "\nRunning "<< fs::path(file).filename().string()<< endl;
 
-                generateCSR(file);
+                generateWeightedCSR(file);
             }
 
             break;
@@ -132,7 +132,7 @@ void helperGenerateCSR(){
             cout << "\nEnter file path : ";
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, path);
-            generateCSR(path);
+            generateWeightedCSR(path);
 
             break;
         }
