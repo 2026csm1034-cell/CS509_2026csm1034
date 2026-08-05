@@ -66,84 +66,52 @@ assignment_01/
 ```
 
 ## Timing Conventions
-- The timer starts immediately before the algorithm call and stops
-  immediately after it returns.
-- File reading, input parsing, memory allocation for inputs, and result
-  printing are excluded from the reported time.
+- The timer starts immediately before the algorithm call and stops immediately after it returns.
+- File reading, input parsing, memory allocation for inputs, and result printing are excluded from the reported time.
 - All times below are in milliseconds (ms).
 
 ---
+# Input Formate
 
-## Assignment 01 — GEMM (Simple + Blocking) and CSR Graph Implementation
-
-### Assignment Mode: Single
-
-Implement GEMM using both a direct triple-nested-loop ("simple") approach and a cache-blocked ("blocking") approach, along with adjacency-list to CSR (Compressed Sparse Row) graph conversion.
-
-### Algorithm / Approach
-**GEMM Simple**: direct `i-k-j` loop order, `C[i][j] += A[i][k] * B[k][j]`.
-
-**GEMM Blocking**: the M, K, N dimensions are divided into `blockSize` tiles
-user driven; the same `i-k-j` loop runs within each tile so the sub-blocks
-of A, B, C accessed by the inner loops stay resident in cache longer.
-
-
-**CSR Conversion**: `row_ptr` is computed as a prefix sum of per-vertex
-degrees; a single pass then writes each vertex's neighbours (and weights, if
-weighted) into flat `col_idx` / `values` arrays at the offsets given by
-`row_ptr`. O(V + E) time.
-
-
-### Input Format
-
-#### GEMM
+## GEMM
 
 ```text
 M K N
 <Matrix A (M × K)>
 <Matrix B (K × N)>
 ```
-#### Graph
+## Graph
 
 ```text
 V E
-u1 d v1 --> d stand for degree
-u2 d v2
+u1 d v1 W1--> d stand for degree
+u2 d v2 W2
 ...
 ```
 
-Weighted graph:
-
-```text
-V E
-u1 d v1 w1  -> d stand for degree and all the v1 and w1 are implemented
-u2 d v2 w2
-...
-```
-### File Structure
+## File Structure
 - `assignment_01/src/gemm.h`, `simple_gemm.cpp` — GEMM implementations
 - `assignment_01/src/gemm.h`, `blocking_gemm.cpp` - Blocked GEMM implementations
 - `assignment_01/src/csr.h`, `generate_CSR.cpp` — adjacency-list reader + CSR conversion
 - `assignment_01/driver/driver.cpp` — drivers
 - `assignment_01/tests/gemm/`, `tests/csr/` — test files
-### Compilation
+## Compilation
 ```zsh
 cd ./CS509_2026csm1034
 make
 ```
-### Execution
+## Execution
 ```zsh
 ./cs509
 ```
-### 9.1 GEMM Results Table
+##  GEMM Results Table
 
 | Test File | Input Size (M K N) | Simple Time (ms) | Blocking Time (ms) | Block Size | Status |
 |------------------|-----------|-----------|-----------|----|-------------|
 | gemm_test_01.txt | [2 3 2]   | 0.0006 | 0.0003 | 32 | ✅ Pass |
-| gemm_test_02.txt | [64 64 64] | 0.2146 | 0.2093 | 32 | ✅ Pass |
-| gemm_test_03.txt | [256 256 256] | 13.557 | 20.9001| 32 | ✅ Pass |
+| gemm_test_03.txt | [250 250 250] | 13.557 | 20.9001| 32 | ✅ Pass |
 
-### 9.2 CSR Conversion Results Table
+##  CSR Conversion Results Table
 
 
 | Test File | Vertices (V) | Edges (E) | Weighted | Conversion Time (ms) | Status |
@@ -162,5 +130,5 @@ make
 | GEMM (Blocking) | O(M × K × N) | O(M × N) |
 | CSR Conversion | O(V + E) | O(V + E) |
 
-### LINK
+## LINK
 [github](https://github.com/2026csm1034-cell/CS509_2026csm1034)
