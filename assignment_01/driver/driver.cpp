@@ -4,6 +4,7 @@
 #include "../src/gemm/gemm.h"
 #include "../src/csr/csr.h"
 #include "../../common_wrapper/utilities.h"
+#include "../src/graph_io/graph_io.h"
 using namespace std;
 
 // helper blocking gemm
@@ -101,6 +102,31 @@ void helperSimpleGemm(){
     }
 }
 
+
+//output file for CSR;
+void writeCSR(const CSR& csr, const std::string& filename) {
+    string path = createOutputFile(filename,"csr");
+    std::ofstream outputFile(path);
+    if (!outputFile.is_open()) {
+        std::cerr << "Error: Could not open file " << filename << std::endl;
+        return;
+    }
+
+    int V = csr.row_ptr.size() - 1;
+    int E = csr.col_idx.size();
+
+    outputFile << V << " " << E << "\n";
+    for (int u = 0; u < V; ++u) {
+        outputFile << csr.row_ptr[u] << " " << csr.row_ptr[u + 1] << "\n";
+        for (int i = csr.row_ptr[u]; i < csr.row_ptr[u + 1]; ++i) {
+            outputFile << csr.col_idx[i] << " ";
+        }
+        outputFile << "\n";
+    }
+    outputFile.close();
+}
+
+//helper to generate WeightedCSR
 void helperGenerateCSR(){
     int mode = Menu::chooseInputMenu();
 
@@ -108,7 +134,10 @@ void helperGenerateCSR(){
         case 1:{
             string file = chooseTestFile("./assignment_01/tests/csr");
 
-            generateWeightedCSR(file);
+           AdjListWeighted g = readWeightedGraph(file);
+           CSR csr = buildCSR(g);
+
+            writeCSR(csr, file);
 
             break;
             
@@ -120,7 +149,9 @@ void helperGenerateCSR(){
             for(string file : files){
                 cout << "\nRunning "<< fs::path(file).filename().string()<< endl;
 
-                generateWeightedCSR(file);
+                AdjListWeighted g = readWeightedGraph(file);
+                CSR csr = buildCSR(g);
+                writeCSR(csr, file);
             }
 
             break;
@@ -132,8 +163,9 @@ void helperGenerateCSR(){
             cout << "\nEnter file path : ";
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             getline(cin, path);
-            generateWeightedCSR(path);
-
+            AdjListWeighted g = readWeightedGraph(path);
+            CSR csr = buildCSR(g);
+            writeCSR(csr, path);
             break;
         }
 
@@ -164,7 +196,7 @@ void assignment01Driver(){
                 helperBlockingGemm();
                 break;
             case 3:
-                cout<<"CSR representation selected"<<endl;
+                cout<<"Weighted CSR representation selected"<<endl;
                 // call generate_CSR
                 helperGenerateCSR();
 

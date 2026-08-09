@@ -10,7 +10,8 @@ SRC = \
 ./assignment_01/driver/driver.cpp \
 ./assignment_01/src/gemm/simple_gemm.cpp \
 ./assignment_01/src/gemm/blocking_gemm.cpp \
-./assignment_01/src/csr/generate_CSR.cpp
+./assignment_01/src/csr/csr.cpp \
+./assignment_01/src/graph_io/graph_io.cpp
 
 all:
 	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET)
