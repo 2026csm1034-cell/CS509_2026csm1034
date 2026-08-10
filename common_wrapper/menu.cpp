@@ -70,3 +70,26 @@ int Menu::chooseInputMenu(){
     }
     return choice;
 }
+
+int Menu::showAlgorithm2Menu(){
+    cout<<"\n======================================="<<endl;
+    cout<<"             Algorithms                "<<endl;
+    cout<<"======================================="<<endl;
+
+
+    cout<<"1. Bellman-Ford"<<endl;
+    cout<<"2. Floyd-Warshall"<<endl;
+    cout<<"0. Go Back"<<endl;
+
+    int choice=-1;
+
+    cout << "\nEnter choice: ";
+
+    if (!(cin >> choice)){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        return -1;
+    }
+
+    return choice;
+}
