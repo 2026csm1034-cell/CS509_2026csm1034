@@ -14,7 +14,7 @@ int main()
     random_device rd;
     mt19937 gen(rd());
 
-    uniform_int_distribution<int> weightDist(-2, 20);
+    uniform_int_distribution<int> weightDist(-3, 20);
 
     for(int s = 0; s < 5; s++)
     {

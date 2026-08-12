@@ -25,7 +25,7 @@ int main()
     uniform_real_distribution<double> probability(0.0, 1.0);
 
     // Positive edge weights
-    uniform_int_distribution<int> weightDist(-5, 20);
+    uniform_int_distribution<int> weightDist(-1, 20);
 
     for(int s = 0; s < 5; s++)
     {

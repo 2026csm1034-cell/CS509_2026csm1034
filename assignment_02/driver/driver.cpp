@@ -112,7 +112,11 @@ void outputFloydWarshall(const string & file, const FloydWarshallResult & result
     if(!result.isNegativeCycle){
         for(int i=0; i<result.dist.size(); i++){
             for(int j=0; j<result.dist[i].size(); j++){
-                out << result.dist[i][j] << " ";
+                if(result.dist[i][j] == INF){
+                    out << "INF ";
+                } else {
+                    out << result.dist[i][j] << " ";
+                }
             }
             out << endl;
         }
