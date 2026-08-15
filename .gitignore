@@ -1,2 +1,10 @@
-outputs/
+# Build files
+build/
+*.o
 cs509
+
+# IDE
+.vscode/
+
+# macOS
+.DS_Store
