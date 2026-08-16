@@ -14,7 +14,11 @@ SRC = \
 ./assignment_01/src/graph_io/graph_io.cpp \
 ./assignment_02/driver/driver.cpp \
 ./assignment_02/src/bellman_ford/bellman_ford.cpp \
-./assignment_02/src/floyd_warshall/floyd_warshall.cpp
+./assignment_02/src/floyd_warshall/floyd_warshall.cpp \
+./assignment_03/driver/driver.cpp \
+./assignment_03/src/kruskal/kruskal.cpp \
+./assignment_03/src/prims/prims.cpp \
+./assignment_03/src/mst/mst.cpp 
 
 all:
 	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET)

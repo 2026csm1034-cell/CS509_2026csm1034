@@ -1,6 +1,7 @@
 #include<iostream>
 #include "../assignment_01/driver/driver.h"
 #include "../assignment_02/driver/driver.h"
+#include "../assignment_03/driver/driver.h"
 #include "menu.h"
 
 using namespace std;
@@ -18,7 +19,7 @@ int main(){
                 driverAssignment02();
                 break;
             case 3:
-                cout<<"\nAssignment_03 is not implemented yet."<<endl;
+                driverAssignment03();
                 break;
             case 0:
                 cout<<"\n Exiting..."<<endl;

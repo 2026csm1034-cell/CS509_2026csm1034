@@ -1,0 +1,15 @@
+Algorithm: Bellman-Ford
+Source: 5
+Vertices Distances
+0 -3
+1 14
+2 12
+3 5
+4 12
+5 0
+6 17
+7 3
+8 2
+9 17
+Negative Cycle: None
+Time taken: 0.002208 ms

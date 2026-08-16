@@ -93,3 +93,26 @@ int Menu::showAlgorithm2Menu(){
 
     return choice;
 }
+
+
+int Menu::showAlgorithm3Menu(){
+    cout<<"\n======================================="<<endl;
+    cout<<"             Algorithms                "<<endl;
+    cout<<"======================================="<<endl;
+
+
+    cout<<"1. MST Algorithms"<<endl;
+    cout<<"0. Go Back"<<endl;
+
+    int choice=-1;
+
+    cout << "\nEnter choice: ";
+
+    if (!(cin >> choice)){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        return -1;
+    }
+
+    return choice;
+}

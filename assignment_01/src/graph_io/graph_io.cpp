@@ -75,11 +75,11 @@ AdjListWeighted readWeightedGraph(const std::string& filepath) {
         }
     }
 
-    string tag;
-    inputFile >> tag >> graph.src;
-    if (!inputFile || tag != "SOURCE") {
-        throw runtime_error("Missing SOURCE line in file: " + filepath);
-    }
+    // string tag;
+    // inputFile >> tag >> graph.src;
+    // if (!inputFile || tag != "SOURCE") {
+    //     throw runtime_error("Missing SOURCE line in file: " + filepath);
+    // }
 
     return graph;
 }

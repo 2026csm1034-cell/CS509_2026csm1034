@@ -8,6 +8,7 @@ class Menu{
     static int showAlgorithmMenu();
     static int chooseInputMenu();
     static int showAlgorithm2Menu();
+    static int showAlgorithm3Menu();
 };
 
 
