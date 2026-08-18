@@ -65,11 +65,11 @@ AdjListWeighted readWeightedGraph(const std::string& filepath) {
             throw runtime_error("Invalid adjacency line format in file: " + filepath);
         }
         graph.adj[u].reserve(degree);
-        for (int k = 0; k < degree; ++k) {
+        for(int k = 0; k < degree; ++k) {
             int negh, weight;
             inputFile >> negh >> weight;
-            if (!inputFile) {
-                throw runtime_error("Invalid neighbor/weight list in file: " + filepath);
+            if(!inputFile || negh < 0 || negh >= graph.V) {
+                throw runtime_error("Invalid neighbor in file: " + filepath);
             }
             graph.adj[u].push_back({negh, weight});
         }

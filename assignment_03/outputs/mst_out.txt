@@ -5,14 +5,14 @@ MST edges:
 1 4 5
 0 3 6
 Total MST weight: 16
-Execution time: 0.131125
+Execution time: 0.126667
 
 
 Algorithm: Prim's MST 
 MST edges: 
 0 1 2
-0 3 6
 1 2 3
 1 4 5
+0 3 6
 Total MST weight: 16
-Execution time: 0.089667
+Execution time: 0.136458

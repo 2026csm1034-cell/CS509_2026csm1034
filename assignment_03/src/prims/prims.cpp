@@ -2,28 +2,33 @@
 
 PrimsResult prims(CSR & csr){
     PrimsResult result;
-    //wt , node
-    priority_queue<pair<int,int>,vector<pair<int,int>>, greater<pair<int,int>>> pq;
+    //wt , vetex, parent
+    priority_queue<tuple<int,int,int>,vector<tuple<int,int,int>>, greater<tuple<int,int,int>>> pq;
 
-    pq.push({0,0}); //pushed first node as every node must be in mst
+    pq.push({0,0,-1}); //pushed first node as every node must be in mst
 
     int V = csr.row_ptr.size() -1;
     vector<bool> visited(V,false);
-    visited[0]=true;
     while(!pq.empty()){
-        int u = pq.top().second;
-        int wt = pq.top().first;
+        auto [wt,u,parent] = pq.top();
         pq.pop();
 
-        result.mst_weight += wt;
+        if(visited[u]) {
+            continue;
+        }
+        visited[u]=true;
+
+        if(parent != -1){
+            result.mst.push_back({parent,u,wt});
+            result.mst_weight += wt;
+        }
+
 
         for(int i=csr.row_ptr[u]; i<csr.row_ptr[u+1]; i++){
             int v = csr.col_idx[i];
-            int wt = csr.values[i];
+            int edgewt = csr.values[i];
             if(!visited[v]){
-                result.mst.push_back({u,v,wt});
-                visited[v]=true;
-                pq.push({wt,v});
+                pq.push({edgewt,v,u});
             }
         }
     }
