@@ -35,7 +35,7 @@ inline void showFiles(const vector<string> &files)
 {
     cout << "\nAvailable Test Files\n\n";
 
-    for(int i = 0; i < files.size(); i++)
+    for(int i = 0; i < int(files.size()); i++)
     {
         cout << i + 1 << ". "<< fs::path(files[i]).filename().string()<< endl;
     }
@@ -52,7 +52,7 @@ inline string chooseTestFile(const string &folder)
     cout << "\nSelect File : ";
     cin >> choice;
 
-    while(choice < 1 || choice > files.size())
+    while(choice < 1 || choice > int(files.size()))
     {
         cout << "Invalid choice. Enter again : ";
         cin >> choice;

@@ -52,9 +52,8 @@ KruskalResult kruskal(CSR &csr){
         }
     }
 
-    sort(edges.begin(), edges.end(), [](const Edges e1, const Edges e2){
-        if(e1.w <= e2.w) return true;
-        return false;
+    sort(edges.begin(), edges.end(), [](const Edges& e1, const Edges& e2){
+    return e1.w < e2.w;
     });
 
     for(auto e:edges){

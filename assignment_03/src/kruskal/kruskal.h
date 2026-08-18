@@ -10,7 +10,7 @@ struct Edges{
     int w;
 };
 struct KruskalResult{
-    int mst_weight=0;
+    long long mst_weight=0;
     vector<Edges> mst;
 };
 KruskalResult kruskal(CSR &csr);

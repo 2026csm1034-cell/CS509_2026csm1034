@@ -7,7 +7,7 @@
 #include<queue>
 using namespace std;
 struct PrimsResult{
-    int mst_weight=0;
+    long long mst_weight=0;
     vector<Edges> mst;
 
 };

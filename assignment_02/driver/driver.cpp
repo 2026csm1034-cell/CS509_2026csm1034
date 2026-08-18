@@ -7,7 +7,7 @@ void outputBellmanFord(const string& file, const BellmanFordResult& result, int 
     out<<"Source: "<< source << endl;
     if(!result.isNegativeCycle){
         out<<"Vertices "<<"Distances\n";
-        for(int i=0; i<result.distances.size(); i++){
+        for(int i=0; i<int(result.distances.size()); i++){
             if(result.distances[i] != LLONG_MAX){
                 out<<i<<" "<<result.distances[i]<<endl;
             }else{
@@ -110,8 +110,8 @@ void outputFloydWarshall(const string & file, const FloydWarshallResult & result
     ofstream out(outputFile);
     out<<"Algorithm: Floyd-Warshall"<<endl;
     if(!result.isNegativeCycle){
-        for(int i=0; i<result.dist.size(); i++){
-            for(int j=0; j<result.dist[i].size(); j++){
+        for(int i=0; i<int(result.dist.size()); i++){
+            for(int j=0; j<int(result.dist[i].size()); j++){
                 if(result.dist[i][j] == INF){
                     out << "INF ";
                 } else {
