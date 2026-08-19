@@ -50000,7 +50000,7 @@ MST edges:
 42093 31657 993686
 32660 1780 995007
 Total MST weight: 9826985717
-Execution time: 105.127
+Execution time: 106.815
 
 
 Algorithm: Prim's MST 
@@ -100005,4 +100005,4 @@ MST edges:
 31657 42093 993686
 1780 32660 995007
 Total MST weight: 9826985717
-Execution time: 358.383
+Execution time: 360.121

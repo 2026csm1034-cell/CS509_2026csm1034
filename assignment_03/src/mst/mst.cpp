@@ -20,7 +20,10 @@ void outputMST(const string & file, KruskalResult & k_result, PrimsResult & p_re
     }
     out<<"Total MST weight: "<<p_result.mst_weight<<endl;
     out<<"Execution time: "<<duration2<<endl;
-
+    cout<<"Total MST weight of kruskal: "<<k_result.mst_weight<<endl;
+    cout<<"Total MST weight of prims: "<<p_result.mst_weight<<endl;
+    cout << "Time taken by kruskal: " << duration1 << " ms" << endl;
+    cout <<"Time taken by prims: " << duration2 <<" ms"<<endl;
 }
 
 void driverMST(){
@@ -42,8 +45,6 @@ void driverMST(){
                 end = chrono::high_resolution_clock::now();
                 auto duration2 = chrono::duration<double,milli>(end-start).count();
                 outputMST(file, k_result, p_result, duration1, duration2);
-                cout << "Time taken by kuruskal: " << duration1 << " ms" << endl;
-                cout <<"Time taken by prims: " << duration2 <<" ms"<<endl;
 
             break;
         }
@@ -65,8 +66,6 @@ void driverMST(){
                 end = chrono::high_resolution_clock::now();
                 auto duration2 = chrono::duration<double,milli>(end-start).count();
                 outputMST(file, k_result, p_result, duration1, duration2);
-                cout << "Time taken by kruskal: " << duration1 << " ms" << endl;
-                cout <<"Time taken by prims: " << duration2 <<" ms"<<endl;
             }
             break;
         }
@@ -87,8 +86,6 @@ void driverMST(){
                 end = chrono::high_resolution_clock::now();
                 auto duration2 = chrono::duration<double,milli>(end-start).count();
                 outputMST(path, k_result, p_result, duration1, duration2);
-                cout << "Time taken by kuruskal: " << duration1 << " ms" << endl;
-                cout <<"Time taken by prims: " << duration2 <<" ms"<<endl;
             break;
         }
         default:

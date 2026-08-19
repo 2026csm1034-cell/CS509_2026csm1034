@@ -278,7 +278,7 @@ This assignment focused on kruskal and prims Algorithms;
 ## Directory Structure
 
 ```text
-Assignment_02
+Assignment_03
     driver/
         driver.cpp
         driver.h
@@ -308,3 +308,56 @@ tools/
     mst_generator.cpp
 Makefile
 ```
+
+
+## MST input file formate
+V E
+u0 degree neighbor1 weight1 neighbor2 weight2 ...
+u1 degree neighbor1 weight1 neighbor2 weight2 ...
+...
+u(V-1) degree neighbor1 weight1 neighbor2 weight2 ...
+V: number of vertices. E: number of undirected edges, counting each graph edge once even though it appears in both adjacency lists.
+Every edge must appear in the adjacency list of both endpoint vertices with the same weight.
+The graph must be connected.
+For a vertex with no neighbours, the general format is u 0, but a valid MST input with V > 1 cannot contain an isolated vertex.
+The same input file must be used for both Kruskal and Prim.
+
+## MST output Formate
+Algorithm: Kruskal's MST
+MST edges:
+0 1 2
+1 2 3
+1 4 5
+0 3 6
+Total MST weight: 16
+Execution time: <value> ms
+
+Algorithm: Prim's MST
+MST edges:
+0 1 2
+1 2 3
+1 4 5
+0 3 6
+Total MST weight: 16
+Execution time: <value> ms
+
+## Compilation
+    '''zsh
+        make
+    '''
+
+## Execution 
+    ./cs509
+
+
+## MST Results Table
+| File| V | E | Exp. Wt. | Kruskal Wt. | Prim Wt. | Kruskal Time | Prim Time | Equal? | Status |
+|----------|---------|---------|--------|----------|------------|----------------|--------------|------------|------------|
+|mast_10.txt| 10 | 30 | Minimum Wt. | 1508444| 1508444 | 0.182083 ms | 0.117958 ms | yes | passed |
+|mast_100.txt| 100 | 300 | Minimum Wt. | 21233532| 21233532 | 0.671541 ms| 0.949583 ms| yes | passed |
+|mast_10000.txt| 10000 | 30000 | Minimum Wt. | 1975160223| 1975160223 | 24.758 ms| 64.7869 ms| yes | passed |
+|mast_50000.txt| 50000 | 150000 | Minimum Wt. | 9826985717| 9826985717 | 106.815 ms| 360.121 ms | yes | passed |
+|mast_1000000.txt| 1000000 | 3000000 | Minimum Wt. | 19711341166| 19711341166 | 215.678 ms | 744.986 ms | yes | passed |
+
+## Conclusion
+Both Kruskal's and Prim's algorithms produced the same MST weight for every reported test case, indicating consistent results across the implementations. The execution times show that Kruskal's algorithm was faster than Prim's algorithm on the larger reported test cases, while Prim's algorithm was slightly faster for the smallest graph.
