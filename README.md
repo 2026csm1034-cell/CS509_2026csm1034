@@ -359,5 +359,11 @@ Execution time: <value> ms
 |mast_50000.txt| 50000 | 150000 | Minimum Wt. | 9826985717| 9826985717 | 106.815 ms| 360.121 ms | yes | passed |
 |mast_1000000.txt| 1000000 | 3000000 | Minimum Wt. | 19711341166| 19711341166 | 215.678 ms | 744.986 ms | yes | passed |
 
+## complexity 
+| Algorithm | Time Complexity | Space Complexity |
+|-----------|-----------------|------------------|
+| Kruskal | O(ElogE) | O(E + V) |
+| prims | O(ElogV) | O(V+E) |
+
 ## Conclusion
 Both Kruskal's and Prim's algorithms produced the same MST weight for every reported test case, indicating consistent results across the implementations. The execution times show that Kruskal's algorithm was faster than Prim's algorithm on the larger reported test cases, while Prim's algorithm was slightly faster for the smallest graph.
