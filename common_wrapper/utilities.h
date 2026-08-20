@@ -7,7 +7,7 @@
 #include <filesystem>
 #include <fstream>
 #include <algorithm>
-
+#include <bits/stdc++.h>
 using namespace std;
 namespace fs = std::filesystem;
 
