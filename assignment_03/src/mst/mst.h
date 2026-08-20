@@ -7,6 +7,7 @@
 #include "../kruskal/kruskal.h"
 #include "../prims/prims.h"
 #include<filesystem>
+#include<bits/stdc++.h>
 using namespace std;
 namespace fs = filesystem;
 void driverMST();
