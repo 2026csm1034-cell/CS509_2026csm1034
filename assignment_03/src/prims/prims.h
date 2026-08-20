@@ -5,6 +5,7 @@
 #include "../kruskal/kruskal.h"
 #include <vector>
 #include<queue>
+#include<bits/stdc++.h>
 using namespace std;
 struct PrimsResult{
     long long mst_weight=0;
