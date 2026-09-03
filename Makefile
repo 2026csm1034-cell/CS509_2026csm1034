@@ -1,4 +1,11 @@
-CXX = g++
+UNAME_S := $(shell uname -s)
+
+# Compiler
+ifeq ($(UNAME_S),Darwin)
+    CXX := /opt/homebrew/bin/g++-16
+else
+    CXX := g++
+endif
 
 CXXFLAGS = -std=c++17 -Wall  -g -fsanitize=address,undefined
 
@@ -18,7 +25,11 @@ SRC = \
 ./assignment_03/driver/driver.cpp \
 ./assignment_03/src/kruskal/kruskal.cpp \
 ./assignment_03/src/prims/prims.cpp \
-./assignment_03/src/mst/mst.cpp 
+./assignment_03/src/mst/mst.cpp \
+./assignment_04/driver/driver.cpp \
+./assignment_04/src/io/io.cpp \
+./assignment_04/src/pageRank/pageRank.cpp \
+./assignment_04/src/vertex_coloring/vertex_color.cpp
 
 all:
 	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET)
