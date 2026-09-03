@@ -1,7 +1,10 @@
 # Build files
 build/
 *.o
+# Build output
 cs509
+cs509.dSYM/
+
 
 # IDE
 .vscode/
