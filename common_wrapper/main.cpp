@@ -2,6 +2,7 @@
 #include "../assignment_01/driver/driver.h"
 #include "../assignment_02/driver/driver.h"
 #include "../assignment_03/driver/driver.h"
+#include "../assignment_04/driver/driver.h"
 #include "menu.h"
 
 using namespace std;
@@ -20,6 +21,9 @@ int main(){
                 break;
             case 3:
                 driverAssignment03();
+                break;
+            case 4:
+                driverAssignment04();
                 break;
             case 0:
                 cout<<"\n Exiting..."<<endl;

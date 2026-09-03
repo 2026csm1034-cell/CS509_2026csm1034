@@ -1,4 +1,5 @@
 #include<iostream>
+#include<bits/stdc++.h>
 #include "menu.h"
 
 using namespace std;
@@ -102,6 +103,29 @@ int Menu::showAlgorithm3Menu(){
 
 
     cout<<"1. MST Algorithms"<<endl;
+    cout<<"0. Go Back"<<endl;
+
+    int choice=-1;
+
+    cout << "\nEnter choice: ";
+
+    if (!(cin >> choice)){
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        return -1;
+    }
+
+    return choice;
+}
+
+int Menu::showAlgorithm4Menu(){
+    cout<<"\n======================================="<<endl;
+    cout<<"             Algorithms                "<<endl;
+    cout<<"======================================="<<endl;
+
+
+    cout<<"1. PageRank"<<endl;
+    cout<<"2. Vertex Color"<<endl;
     cout<<"0. Go Back"<<endl;
 
     int choice=-1;
