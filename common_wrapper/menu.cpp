@@ -12,15 +12,17 @@ int Menu::showAssignmentMenu(){
     cout<<"1. Assignment_01"<<endl;
     cout<<"2. Assignment_02"<<endl;
     cout<<"3. Assignment_03"<<endl;
+    cout<<"4. Assignment_04"<<endl;
     cout<<"0. Exit"<<endl;
 
     int choice=-1;
 
     cout << "\nEnter choice: ";
-
-    if (!(cin >> choice)){
+    cin>>choice;
+    if (cin.fail()) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input, please enter a number." << endl;
         return -1;
     }
     return choice;
@@ -40,10 +42,11 @@ int Menu::showAlgorithmMenu(){
     int choice=-1;
 
     cout << "\nEnter choice: ";
-
-    if (!(cin >> choice)){
+    cin>>choice;
+   if (cin.fail()) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input, please enter a number." << endl;
         return -1;
     }
 
@@ -63,10 +66,11 @@ int Menu::chooseInputMenu(){
     int choice=-1;
 
     cout << "\nEnter choice: ";
-
-    if (!(cin >> choice)){
+    cin>>choice;
+    if (cin.fail()) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input, please enter a number." << endl;
         return -1;
     }
     return choice;
@@ -85,10 +89,11 @@ int Menu::showAlgorithm2Menu(){
     int choice=-1;
 
     cout << "\nEnter choice: ";
-
-    if (!(cin >> choice)){
+    cin>>choice;
+    if (cin.fail()) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input, please enter a number." << endl;
         return -1;
     }
 
@@ -108,10 +113,11 @@ int Menu::showAlgorithm3Menu(){
     int choice=-1;
 
     cout << "\nEnter choice: ";
-
-    if (!(cin >> choice)){
+    cin>>choice;
+    if (cin.fail()) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input, please enter a number." << endl;
         return -1;
     }
 
@@ -131,10 +137,11 @@ int Menu::showAlgorithm4Menu(){
     int choice=-1;
 
     cout << "\nEnter choice: ";
-
-    if (!(cin >> choice)){
+    cin>>choice;
+    if (cin.fail()) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Invalid input, please enter a number." << endl;
         return -1;
     }
 
