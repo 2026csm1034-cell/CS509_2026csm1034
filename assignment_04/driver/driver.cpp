@@ -1,7 +1,30 @@
 #include "driver.h"
 
 void outputPageRank(const string &file, const PageRankResult &result, double duration) {
-    // Implementation for outputting page rank results
+    string fileName = createOutputFiles4(file, "pageRank");
+    ofstream outputFile(fileName);
+ 
+    outputFile << "Algorithm: PageRank" << "\n";
+    outputFile << "Damping: " << result.d << "\n";
+ 
+    outputFile << "Vertex ranks:" << "\n";
+    outputFile << fixed << setprecision(6);
+    for (const auto &p : result.rank) {
+        outputFile << p.first << " " << p.second << "\n";
+    }
+ 
+    outputFile << "Sum of ranks: " << result.totalRank << "\n";
+    outputFile << defaultfloat;
+    outputFile << "Iterations: " << result.itration << "\n";
+    outputFile << "Converged: " << (result.isConverged ? "true" : "false") << "\n";
+    outputFile << "Execution time: " << duration << " ms" << "\n";
+ 
+    cout << "Output File Generated : " << fileName << endl;
+    cout << "V=" << result.rank.size() << "  Sum of ranks: "
+         << fixed << setprecision(6) << result.totalRank << endl;
+    cout << defaultfloat << "Iterations: " << result.itration
+         << "  Converged: " << (result.isConverged ? "true" : "false") << endl;
+    cout << "Execution Time: " << duration << " ms" << endl;
 }
 
 void driverPageRank(){
@@ -64,7 +87,22 @@ void driverPageRank(){
 
 
 void outputColor(const string &file, const VertexColorResult &result, double duration) {
-    // Implementation for outputting vertex color results
+   string fileName = createOutputFiles4(file, "color");
+    ofstream outputFile(fileName);
+ 
+    outputFile << "Algorithm: Greedy Vertex Coloring" << "\n";
+ 
+    outputFile << "Vertex colors:" << "\n";
+    for (size_t i = 0; i < result.colors.size(); ++i) {
+        outputFile << i << " " << result.colors[i] << "\n";
+    }
+ 
+    outputFile << "Colors used: " << result.numColors << "\n";
+    outputFile << "Execution time: " << duration << " ms" << "\n";
+ 
+    cout << "Output File Generated : " << fileName << endl;
+    cout << "V=" << result.colors.size() << "  Colors used: " << result.numColors << endl;
+    cout << "Execution Time: " << duration << " ms" << endl;
 }
 void driverColor(){
     int choice = Menu::chooseInputMenu();
