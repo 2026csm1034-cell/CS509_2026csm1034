@@ -520,8 +520,8 @@ Execution Time: 0.096 ms
 ## complexity
 | Algorithm | Time Complexity | Space Complexity |
 |-----------|-----------------|------------------|
-| Vertex Coloring (Greedy) | O(V + E) | O(V + E) |
-| PageRank (per iteration) | O(V + E) | O(V + E) |
+| Vertex Coloring (Greedy) | O(V² + E) | O(V + E) |
+| PageRank (per iteration) | O(I × (V + E)) | O(V + E) |
 
 Vertex Coloring makes a single pass over every vertex and its adjacency list once, so total work is proportional to the size of the graph. PageRank repeats an O(V + E) pass (one push of rank along every edge, plus a constant-time update per vertex) for each iteration until convergence or `MAX_ITERATIONS` is reached, so overall time is O(iterations x (V + E)).
 
