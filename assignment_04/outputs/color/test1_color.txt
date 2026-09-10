@@ -1,0 +1,9 @@
+Algorithm: Greedy Vertex Coloring
+Vertex colors:
+0 0
+1 1
+2 2
+3 0
+4 1
+Colors used: 3
+Execution time: 0.004 ms

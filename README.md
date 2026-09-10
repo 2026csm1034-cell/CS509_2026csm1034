@@ -367,3 +367,163 @@ Execution time: <value> ms
 
 ## Conclusion
 Both Kruskal's and Prim's algorithms produced the same MST weight for every reported test case, indicating consistent results across the implementations. The execution times show that Kruskal's algorithm was faster than Prim's algorithm on the larger reported test cases, while Prim's algorithm was slightly faster for the smallest graph.
+
+# Assignment_04
+This assignment focused on Vertex Coloring and PageRank algorithms.
+
+## Language and Environment
+
+- Language: C++
+- Compiler: g++
+- OS: Apple clang version 21.0.0 (clang-2100.1.1.101)
+- Compile flags used: `-std=c++17 -Wall -g -fsanitize=address,undefined`
+- Timing method: `chrono::high_resolution_clock`, wall-clock duration in milliseconds
+
+## Directory Structure
+
+```text
+assignment_04/
+    driver/
+        driver.cpp
+        driver.h
+    outputs/
+        color/
+        pageRank/
+    src/
+        io/
+        pageRank/
+        vertex_coloring/
+    tests/
+        color/
+        pageRank/
+common_wrapper/
+    similar to previous structure
+tools/
+Makefile
+README.md
+```
+
+## Vertex Coloring input format
+```
+V E
+u0 degree neighbor1 neighbor2 ...
+u1 degree neighbor1 neighbor2 ...
+...
+u(V-1) degree neighbor1 neighbor2 ...
+```
+* V: number of vertices. E: number of undirected edges, counting each graph edge once even though it appears in both adjacency lists.
+* Every edge must appear in the adjacency list of both endpoint vertices.
+* No self-loops. Parallel edges between the same pair of vertices are not listed more than once.
+* For an isolated vertex, the general format is `u 0`; an isolated vertex is valid for Vertex Coloring and is simply assigned color 0.
+
+## Vertex Coloring output format
+```
+Algorithm: Greedy Vertex Coloring
+Vertex colors:
+0 0
+1 1
+2 2
+3 0
+4 1
+Colors used: 3
+Execution time: <value> ms
+```
+
+## PageRank input format
+```
+V E
+u0 outdegree neighbor1 neighbor2 ...
+u1 outdegree neighbor1 neighbor2 ...
+...
+u(V-1) outdegree neighbor1 neighbor2 ...
+DAMPING d
+TOLERANCE epsilon
+MAX_ITERATIONS n
+```
+* V: number of vertices. E: number of directed edges.
+* Only the outgoing edges of each vertex are listed.
+* DAMPING is the damping factor d, 0 < d < 1 (0.85 used for all test runs).
+* Iteration stops when the total change in rank across all vertices is <= TOLERANCE, or when MAX_ITERATIONS has been reached.
+
+## PageRank output format
+```
+Algorithm: PageRank
+Damping: 0.85
+Vertex ranks:
+0 0.226283
+1 0.267536
+2 0.297557
+3 0.208624
+Sum of ranks: 1.000000
+Iterations: <value>
+Converged: true
+Execution time: <value> ms
+```
+
+## Compilation
+    '''zsh
+        make
+    '''
+
+## Execution
+    ./cs509
+
+Sample session:
+```
+=======================================
+             Algorithms
+=======================================
+1. PageRank
+2. Vertex Color
+0. Go Back
+Enter choice: 1
+=======================================
+             Input Options
+=======================================
+1. Run Selected Test
+2. Run All Tests
+3. Enter Custom Input File
+0. Go Back
+Enter choice: 2
+Running pagerank_10.txt
+Output File Generated : assignment_04/outputs/pageRank/pagerank_10_pageRank.txt
+V=10  Sum of ranks: 1.000000
+Iterations: 14  Converged: true
+Execution Time: 0.096 ms
+...
+```
+
+## Vertex Coloring Results Table
+| File | V | E | Colors Used | Valid? | Time | Status |
+|---|---|---|---|---|---|---|
+| color_10.txt | 10 | 30 | 6 | Yes | 1.352 ms | Passed |
+| color_100.txt | 100 | 300 | 6 | Yes | 0.143 ms | Passed |
+| color_10000.txt | 10,000 | 30,000 | 7 | Yes | 11.837 ms | Passed |
+| color_100000.txt | 100,000 | 300,000 | 7 | Yes | 126.308 ms | Passed |
+| color_50000.txt | 50,000 | 150,000 | 7 | Yes | 68.741 ms | Passed |
+| test1.txt | 5 | 6 | 3 | Yes | 0.004 ms | Passed |
+
+"Valid?" was checked by confirming no two adjacent vertices share a color for every edge in the input graph.
+
+## PageRank Results Table
+| File | V | E | Damping | Top Vertex | Sum of Ranks | Iter. / Time | Status |
+|---|---|---|---|---|---|---|---|
+| pagerank_10.txt | 10 | 30 | 0.85 | 2 | ~1.000 | 14 / 0.096 ms | Passed |
+| pagerank_100.txt | 100 | 300 | 0.85 | 72 | ~1.000 | 14 / 0.404 ms | Passed |
+| pagerank_1000.txt | 1,000 | 3,000 | 0.85 | 75 | ~1.000 | 15 / 3.193 ms | Passed |
+| pagerank_10000.txt | 10,000 | 30,000 | 0.85 | 887 | ~1.000 | 15 / 20.249 ms | Passed |
+| pagerank_50000.txt | 50,000 | 150,000 | 0.85 | 35381 | ~1.000 | 15 / 55.148 ms | Passed |
+| test1.txt | 4 | 4 | 0.85 | 2 | ~1.000 | 18 / 0.011 ms | Passed |
+
+"Top Vertex" is the vertex with the highest final PageRank value in that run.
+
+## complexity
+| Algorithm | Time Complexity | Space Complexity |
+|-----------|-----------------|------------------|
+| Vertex Coloring (Greedy) | O(V + E) | O(V + E) |
+| PageRank (per iteration) | O(V + E) | O(V + E) |
+
+Vertex Coloring makes a single pass over every vertex and its adjacency list once, so total work is proportional to the size of the graph. PageRank repeats an O(V + E) pass (one push of rank along every edge, plus a constant-time update per vertex) for each iteration until convergence or `MAX_ITERATIONS` is reached, so overall time is O(iterations x (V + E)).
+
+## Conclusion
+Both algorithms produced valid, deterministic results across every test size. Greedy Vertex Coloring's color count stayed low and stable relative to graph size (6 colors up to V=100, rising to 7 for V >= 10,000), consistent with the sparse random graphs used (E ~ 3V) offering few opportunities for high-degree vertices to force many colors. PageRank converged in a narrow, consistent range of 14-18 iterations across all graph sizes from V=10 to V=50,000, and the sum of ranks stayed at 1.000000 in every run, confirming correct handling of the damping factor and any dangling nodes. Execution time scaled roughly linearly with V and E for both algorithms, as expected from their O(V + E) per-pass complexity.
